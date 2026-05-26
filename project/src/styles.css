@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.21 0.025 257);
+  --foreground: oklch(0.97 0.005 250);
+  --surface: oklch(0.25 0.025 257);
+  --surface-elevated: oklch(0.29 0.028 257);
+  --card: oklch(0.25 0.025 257);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.25 0.025 257);
+  --popover-foreground: oklch(0.97 0.005 250);
+  --primary: oklch(0.62 0.17 252);
+  --primary-foreground: oklch(0.98 0.005 250);
+  --primary-glow: oklch(0.72 0.18 245);
+  --secondary: oklch(0.32 0.03 257);
+  --secondary-foreground: oklch(0.97 0.005 250);
+  --muted: oklch(0.3 0.025 257);
+  --muted-foreground: oklch(0.72 0.02 257);
+  --accent: oklch(0.62 0.17 252);
+  --accent-foreground: oklch(0.98 0.005 250);
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.98 0.005 250);
+  --border: oklch(0.35 0.02 257 / 60%);
+  --input: oklch(0.32 0.025 257);
+  --ring: oklch(0.62 0.17 252);
+  --gradient-primary: linear-gradient(135deg, oklch(0.62 0.17 252), oklch(0.72 0.18 245));
+  --gradient-hero: radial-gradient(ellipse at top right, oklch(0.62 0.17 252 / 0.25), transparent 60%),
+                   radial-gradient(ellipse at bottom left, oklch(0.55 0.18 270 / 0.18), transparent 55%);
+  --gradient-card: linear-gradient(180deg, oklch(0.27 0.025 257), oklch(0.23 0.025 257));
+  --shadow-glow: 0 10px 40px -10px oklch(0.62 0.17 252 / 0.5);
+  --shadow-card: 0 12px 32px -12px oklch(0.1 0.02 257 / 0.6);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-hero-glow {
+    background-image: var(--gradient-hero);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .bg-background { background-color: var(--background); }
+  .bg-surface { background-color: var(--surface); }
+  .bg-muted { background-color: var(--muted); }
+  .text-foreground { color: var(--foreground); }
+  .text-muted-foreground { color: var(--muted-foreground); }
+  .text-primary { color: var(--primary); }
+  .text-primary-foreground { color: var(--primary-foreground); }
+  .text-destructive { color: var(--destructive); }
+  .border-border { border-color: var(--border); }
+  .border-primary { border-color: var(--primary); }
+  .border-destructive { border-color: var(--destructive); }
+  .bg-primary\/20 { background-color: oklch(0.62 0.17 252 / 0.2); }
+  .bg-primary\/15 { background-color: oklch(0.62 0.17 252 / 0.15); }
+  .border-primary\/30 { border-color: oklch(0.62 0.17 252 / 0.3); }
+  .border-primary\/40 { border-color: oklch(0.62 0.17 252 / 0.4); }
+  .border-primary\/60 { border-color: oklch(0.62 0.17 252 / 0.6); }
+  .bg-destructive\/10 { background-color: oklch(0.62 0.22 27 / 0.1); }
+  .border-destructive\/30 { border-color: oklch(0.62 0.22 27 / 0.3); }
+  .hover\:border-destructive:hover { border-color: var(--destructive); }
+  .hover\:text-destructive:hover { color: var(--destructive); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.6s ease-out both; }
